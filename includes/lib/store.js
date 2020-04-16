@@ -20,8 +20,6 @@ export const actionTypes = {
 
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
-    console.log(action.type)
-    console.log(action.data)
   switch (action.type) {
     case actionTypes.SAVE:
       return {
@@ -36,41 +34,10 @@ export const reducer = (state = exampleInitialState, action) => {
       };
     case actionTypes.CLEAR:
       return exampleInitialState;
-    // case actionTypes.DECREMENT:
-    //   return Object.assign({}, state, {
-    //     count: state.count - 1,
-    //   })
-    // case actionTypes.RESET:
-    //   return Object.assign({}, state, {
-    //     count: exampleInitialState.count,
-    //   })
     default:
       return state
   }
 }
-
-// ACTIONS
-// export const serverRenderClock = isServer => dispatch => {
-//   return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
-// }
-
-// export const startClock = dispatch => {
-//   return setInterval(() => {
-//     dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() })
-//   }, 1000)
-// }
-
-// export const incrementCount = () => {
-//   return { type: actionTypes.INCREMENT }
-// }
-
-// export const decrementCount = () => {
-//   return { type: actionTypes.DECREMENT }
-// }
-
-// export const resetCount = () => {
-//   return { type: actionTypes.RESET }
-// }
 
 export const saveLoginUser = (userData, token)=>{
     return {type: actionTypes.SAVE, data: userData, token: token}

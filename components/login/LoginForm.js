@@ -39,6 +39,9 @@ const LoginForm = (props) => {
                     const userData = responsGetUser.data.data
                     // store user data to redux
                     dispatch(saveLoginUser(userData, token))
+                    // session
+                    localStorage.setItem("user", JSON.stringify(userData))
+                    localStorage.setItem("token",token)
                     onResponses(true, { user_fullname: userData.full_name })
                 }else{
                     onResponses(false, { errors: 'can not get user data' })

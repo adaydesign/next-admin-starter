@@ -1,6 +1,6 @@
-import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone, AssignmentReturn, BatteryCharging60, Telegram, 
-        ListAlt, Add, Home } 
-from '@material-ui/icons';
+import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone, 
+    AssignmentReturn, BatteryCharging60, Telegram, Contacts, Add, ListAlt, Home
+} from '@material-ui/icons';
 
 export const mainMenu = [
     {
@@ -65,6 +65,26 @@ export const mainMenu = [
             },
 
         ]
-    },    
+    },  
+    {  
+        text:'ประเภทบุคคล',
+        icon:<Contacts />,
+        key:'7',
+        subs:[
+            {
+                text:'รายการประเภทบุคคล',
+                icon:<ListAlt />,
+                link: '/officertypes',
+                key:'71'
+            },
+            {
+                text:'เพิ่มประเภทบุคคล',
+                icon:<Add />,
+                link: '/officertypes/add',
+                key:'72'
+            },
+        ]
+    },
+
 ]
 
