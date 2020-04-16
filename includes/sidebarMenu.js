@@ -1,5 +1,8 @@
 import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone, AssignmentReturn, BatteryCharging60, Telegram} from '@material-ui/icons';
-
+import HomeIcon from '@material-ui/icons/Home';
+import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 export const mainMenu = [
     {
         text:'หน้าหลัก',
@@ -44,5 +47,25 @@ export const mainMenu = [
             },
         ]
     },
+    {
+        text:'ภาค/สังกัด',
+        icon:<HomeIcon />,
+        key:'6',
+        subs:[
+            {
+                text:'รายการภาค/สังกัด',
+                icon:<HomeWorkIcon />,
+                link: '/divisions',
+                key:'61'
+            },
+            {
+                text:'เพิ่มรายการภาค/สังกัด',
+                icon:<AddIcon />,
+                link: '/divisions/add',
+                key:'62'
+            },
+
+        ]
+    },    
 ]
 
