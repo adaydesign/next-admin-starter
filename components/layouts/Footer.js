@@ -3,12 +3,13 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 // import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+// import Link from '@material-ui/core/Link';
 import useStyles from './style'
 
-export const Copyright = ()=>{
+export const Copyright = () => {
     return (
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body1" color="textSecondary">
             {'Copyright © '}
             System Name
             {' '}
@@ -24,8 +25,16 @@ const Footer = () => {
     return (
         <footer className={classes.footer}>
             <Container>
-                <Typography variant="body1">My sticky footer can be found here.</Typography>
-                <Copyright />
+                <Grid container>
+                    <Grid item xs={12} md={6}>
+                        <Typography variant="body1">My sticky footer can be found here.</Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Grid container justify={'flex-end'}>
+                            <Copyright />
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Container>
         </footer>
     );

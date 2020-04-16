@@ -25,25 +25,25 @@ const theme = createMuiTheme({
       contrastText: white,
       dark: colors.green[900],
       main: colors.green[600],
-      light: colors.green[400]
+      light: colors.green[100]
     },
     info: {
       contrastText: white,
       dark: colors.blue[900],
       main: colors.blue[600],
-      light: colors.blue[400]
+      light: colors.blue[100]
     },
     warning: {
       contrastText: white,
       dark: colors.orange[900],
       main: colors.orange[600],
-      light: colors.orange[400]
+      light: colors.orange[100]
     },
     error: {
       contrastText: white,
       dark: colors.red[900],
       main: colors.red[600],
-      light: colors.red[400]
+      light: colors.red[100]
     },
     text: {
       primary: colors.blueGrey[900],

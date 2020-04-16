@@ -36,11 +36,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    contentTitle: {
+        color: theme.palette.primary
+    },
+    contentBody: {
+        marginTop: '20px',
+        padding: '20px'
+    },
     footer: {
         padding: theme.spacing(2, 1),
         marginTop: 'auto',
         backgroundColor:
-        theme.palette.type === 'light' ? theme.palette.secondary.light : theme.palette.secondary.dark,
+        theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
     }
 }))
 

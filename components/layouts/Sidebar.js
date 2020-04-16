@@ -30,14 +30,14 @@ const MenuItem = (props) => {
     if (subs != undefined) {
         return (
             <>
-                <ListItem button key={`${menu.text}`} onClick={openSubHandle}>
+                <ListItem button onClick={openSubHandle}>
                     <ListItemIcon>{menu.icon}</ListItemIcon>
                     <ListItemText primary={menu.text} />
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        { subs.map(subItem=>(<MenuItem menu={subItem} fixClass={classes.nested}/>)) }
+                        { subs.map(subItem=>(<MenuItem menu={subItem} fixClass={classes.nested} key={subItem.key}/>)) }
                     </List>
                 </Collapse>
             </>
@@ -45,7 +45,7 @@ const MenuItem = (props) => {
     } else {
         return (
             <Link href={menu.link}>
-                <ListItem button key={`${menu.text}`} className={fixClass}>
+                <ListItem button className={fixClass}>
                     <ListItemIcon>{menu.icon}</ListItemIcon>
                     <ListItemText primary={menu.text} />
                 </ListItem>
@@ -77,7 +77,7 @@ const SidebarDrawer = () => {
                             </ListSubheader>
                         }
                     >
-                        { mainMenu.map( m =>(<MenuItem menu={m} subs={m.subs} />))}
+                        { mainMenu.map( m =>(<MenuItem menu={m} subs={m.subs} key={m.key}/>))}
                     </List>
                 </div>
             </Drawer>
