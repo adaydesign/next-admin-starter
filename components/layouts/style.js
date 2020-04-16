@@ -29,6 +29,24 @@ const useStyles = makeStyles((theme) => ({
     nested: {
         paddingLeft: theme.spacing(4),
     },
+    avatarInHeader:{
+        display: 'flex',
+        direction: 'row',
+        marginRight: '10px'
+    },
+    avatarInSideBar: {
+        backgroundColor: theme.palette.primary,
+        padding: '20px'
+    },
+    avatarSmall: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+        marginRight: '10px'
+    },
+    avatarLarge: {
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+    },
     content: {
         display: 'flex',
         flexDirection: 'column',
@@ -47,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2, 1),
         marginTop: 'auto',
         backgroundColor:
-        theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
+            theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
     }
 }))
 

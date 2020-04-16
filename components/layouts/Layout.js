@@ -9,10 +9,14 @@ import useStyles from './style'
 const Layout = (props) => {
     const classes = useStyles()
 
+    const logoutHandle = () => {
+        
+    }
+
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <HeaderAppBar />
+            <HeaderAppBar logoutHandle={logoutHandle}/>
             <SidebarDrawer />
             <main className={classes.content}>
                 <Toolbar />

@@ -16,6 +16,7 @@ import Collapse from '@material-ui/core/Collapse';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
+import SideBarAvatar from './SidebarAvatar'
 import useStyles from './style';
 import { mainMenu } from '../../includes/sidebarMenu'
 
@@ -69,6 +70,8 @@ const SidebarDrawer = () => {
             >
                 <Toolbar />
                 <div className={classes.drawerContainer}>
+                    <SideBarAvatar />
+                    <Divider />
                     <List
                         aria-labelledby="nested-list-subheader"
                         subheader={
