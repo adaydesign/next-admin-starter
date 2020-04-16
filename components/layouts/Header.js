@@ -19,7 +19,7 @@ export default function HeaderAppBar() {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                ชื่อระบบโปรแกรมอะไรเอ๋ย
+                ชื่อระบบโปรแกรมอะไรเอ่ย
                 </Typography>
                 <Link href='/login'>
                     <Button color="inherit" variant="outlined">เข้าสู่ระบบ</Button>
