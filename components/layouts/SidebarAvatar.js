@@ -1,12 +1,15 @@
+import React from 'react';
+import { connect } from 'react-redux';
+
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+
 import useStyles from './style';
 
-const SideBarAvatar = () => {
+const SideBarAvatar = (props) => {
     const classes = useStyles();
-
+    const { userData } = props;
     return (
         <div className={classes.avatarInSideBar}>
             <Grid container spacing={1} direction="column" justify="center" alignItems="center">
@@ -14,14 +17,22 @@ const SideBarAvatar = () => {
                     <Avatar alt="N" src="" className={classes.avatarLarge} />
                 </Grid>
                 <Grid item>
-                    <Typography variant="body1">ชื่อ - นามสกุล</Typography>
+                    <Typography variant="body1">{userData.fullName}</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography variant="body2">สำนักงาน/หน่วยงาน</Typography>
+                    <Typography variant="body2">{userData.courtName}</Typography>
                 </Grid>
             </Grid>
         </div>
     )
 }
 
-export default SideBarAvatar;
+function mapStateToProps(state) {
+    return {
+        userData: {
+            ...state
+        }
+    };
+}
+
+export default connect(mapStateToProps)(SideBarAvatar);
