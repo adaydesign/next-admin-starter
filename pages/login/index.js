@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router';
 import Avatar from '@material-ui/core/Avatar';
 // import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,10 +15,27 @@ import Typography from '@material-ui/core/Typography';
 import useStyles from '../../components/login/style';
 import LoginForm from '../../components/login/LoginForm';
 import { Copyright } from '../../components/layouts/Footer';
+import Alert from '../../components/shared/Alert';
 
 export default function SignInSide() {
     const classes = useStyles();
-
+    const responseHandle = (success, data) => {
+        Alert({
+          title: success ? 'Login Success' : 'Login Fail!',
+          icon: success ? 'success' : 'error',
+          text: success ? `Welcome ${data.user_fullname}` : data.errors,
+          onClose: () => {
+            if (success) {
+              // redirect
+              const {pathname} = Router
+              //if(pathname == '/' ){
+                  Router.push('/dashboard')
+              //}
+            }
+          }
+        })
+    }
+    
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -30,7 +48,7 @@ export default function SignInSide() {
                     <Typography component="h1" variant="h5">
                         ลงชื่อเข้าสู่ระบบ
                     </Typography>
-                    <LoginForm />
+                    <LoginForm onResponses={responseHandle} />
                     <Box mt={5}>
                         <Copyright />
                     </Box>
