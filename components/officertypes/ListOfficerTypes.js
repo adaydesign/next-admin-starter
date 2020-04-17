@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import Link from 'next/link'
+// import Link from 'next/link'
+import Router from 'next/router'
 
 // import MUIDataTable from "mui-datatables"
 import MaterialTable from 'material-table'
@@ -17,7 +18,8 @@ const ListOfficerTypes = (props) => {
     const [data, setData] = useState([])
     
     const editDataHandle = (event, rowData)=>{
-        alert("You edit " + rowData.name)
+        // alert("You edit " + rowData.name)
+        Router.push('/officertypes/edit/[id]',`/officertypes/edit/${rowData.id}`)
     }
 
     const deleteDataHandle = (event, rowData)=>{
