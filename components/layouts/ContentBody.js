@@ -9,7 +9,7 @@ const ContentBody = (props) => {
     return (<>
         <Grid container>
             <Grid item xs={12}>
-                { paper ? (
+                { paper || paper == undefined ? (
                     <Paper className={classes.contentBody}>
                         { children }
                     </Paper>
