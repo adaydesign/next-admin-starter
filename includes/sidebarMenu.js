@@ -34,13 +34,11 @@ export const mainMenu = [
         subs:[
             {
                 text:'หน้าที่ 4-1',
-                icon:<BatteryCharging60 />,
                 link: '/page41',
                 key:'51'
             },
             {
                 text:'หน้าที่ 4-2',
-                icon:<Telegram />,
                 link: '/page42',
                 key:'52'
             },
@@ -53,13 +51,11 @@ export const mainMenu = [
         subs:[
             {
                 text:'รายการภาค/สังกัด',
-                icon:<ListAlt />,
                 link: '/divisions',
                 key:'61'
             },
             {
                 text:'เพิ่มรายการภาค/สังกัด',
-                icon:<Add />,
                 link: '/divisions/add',
                 key:'62'
             },
@@ -73,13 +69,11 @@ export const mainMenu = [
         subs:[
             {
                 text:'รายการประเภทบุคคล',
-                icon:<ListAlt />,
                 link: '/officertypes',
                 key:'71'
             },
             {
                 text:'เพิ่มประเภทบุคคล',
-                icon:<Add />,
                 link: '/officertypes/add',
                 key:'72'
             },

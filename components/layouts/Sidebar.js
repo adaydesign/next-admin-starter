@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 // import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,7 +27,7 @@ const MenuItem = (props) => {
     const openSubHandle = () => {
         setOpen(!open)
     }
-    
+
     if (subs != undefined) {
         return (
             <>
@@ -38,7 +38,7 @@ const MenuItem = (props) => {
                 </ListItem>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        { subs.map(subItem=>(<MenuItem menu={subItem} fixClass={classes.nested} key={subItem.key}/>)) }
+                        {subs.map(subItem => (<MenuItem menu={subItem} fixClass={classes.nested} key={subItem.key} />))}
                     </List>
                 </Collapse>
             </>
@@ -47,7 +47,7 @@ const MenuItem = (props) => {
         return (
             <Link href={menu.link}>
                 <ListItem button className={fixClass}>
-                    <ListItemIcon>{menu.icon}</ListItemIcon>
+                    {menu.icon ? (<ListItemIcon>{menu.icon}</ListItemIcon>) : null}
                     <ListItemText primary={menu.text} />
                 </ListItem>
             </Link>
@@ -80,7 +80,7 @@ const SidebarDrawer = () => {
                             </ListSubheader>
                         }
                     >
-                        { mainMenu.map( m =>(<MenuItem menu={m} subs={m.subs} key={m.key}/>))}
+                        {mainMenu.map(m => (<MenuItem menu={m} subs={m.subs} key={m.key} />))}
                     </List>
                 </div>
             </Drawer>
