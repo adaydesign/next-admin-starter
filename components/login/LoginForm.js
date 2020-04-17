@@ -22,7 +22,7 @@ const LoginForm = (props) => {
     const dispatch = useDispatch();    
 
     const onSubmitHandle = async (data) => {
-        console.log(data);
+        // console.log(data);
         try {
             const response = await postLogin(data)
             // console.log("--rs--")

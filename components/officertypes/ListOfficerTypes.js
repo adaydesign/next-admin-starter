@@ -6,15 +6,14 @@ const ListOfficerTypes = (props) => {
 
     const { userData } = props
 
+    async function getAllData() {
+        const token = userData.token
+        const allOffices = await getAllOfficers(token)
+        console.log('-- List Data --')
+        console.log(allOffices.data.data)
+    }
+
     useEffect(() => {
-
-        async function getAllData() {
-            const token = userData.token
-            const allOffices = await getAllOfficers(token)
-            console.log('-- List Data --')
-            console.log(allOffices.data.data)
-        }
-
         getAllData()
     }, [])
 
