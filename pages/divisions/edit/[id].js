@@ -3,8 +3,8 @@ import React from 'react'
 import Layout from '../../../components/layouts/Layout'
 import ContentHeader from '../../../components/layouts/ContentHeader'
 import ContentBody from '../../../components/layouts/ContentBody'
-
-const DivisionEdit = () => {
+import EditDivisionsForm from '../../../components/divisions/EditDivisionsForm'
+const DivisionsEdit = () => {
 
     const router = useRouter();
 
@@ -12,10 +12,10 @@ const DivisionEdit = () => {
         <Layout>
             <ContentHeader title={'แก้ไขรายการภาค/สังกัด'} />
             <ContentBody>
-                <div>Body Page1 {router.query.id}</div>
+                <EditDivisionsForm/>
             </ContentBody>
         </Layout>
     )
 }
 
-export default DivisionEdit
+export default DivisionsEdit
