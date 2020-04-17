@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 
-import MUIDataTable from "mui-datatables"
+// import MUIDataTable from "mui-datatables"
+import MaterialTable from 'material-table'
 import Button from "@material-ui/core/Button"
 import { Edit, Delete } from '@material-ui/icons';
 import useStyles from '../../components/officertypes/style';
@@ -14,65 +15,46 @@ const ListOfficerTypes = (props) => {
 
     const { userData } = props
     const [data, setData] = useState([])
+    
+    const editDataHandle = (event, rowData)=>{
+        alert("You edit " + rowData.name)
+    }
+
+    const deleteDataHandle = (event, rowData)=>{
+        confirm("You want to delete " + rowData.name)
+    }
 
     const columns = [
         {
-            name: "id",
-            label: "รหัส"
+            field: "id",
+            title: "รหัส"
         },
         {
-            name: "name",
-            label: "ชื่อประเภท"
+            field: "name",
+            title: "ชื่อประเภท"
         },
         {
-            name: "description",
-            label: "คำอธิบาย"
+            field: "description",
+            title: "คำอธิบาย"
         },
         {
-            name: "remark",
-            label: "หมายเหตุ"
+            field: "remark",
+            title: "หมายเหตุ"
         },
-        {
-            name: "id",
-            label: "แก้ไข",
-            options: {
-                customBodyRender: (value, tableMeta, updateValue) => {
-                    return (
-                        <Link href='/officertypes/edit/[id]' as={`/officertypes/edit/${value}`}>
-                            <Button
-                                variant="contained"
-                                startIcon={<Edit />}
-                                className={classes.editButton}>
-                                แก้ไข
-                            </Button>
-                        </Link>
-                    )
-                }
-            }
-        },
-        {
-            name: "id",
-            label: "ลบ",
-            options: {
-                customBodyRender: (value, tableMeta, updateValue) => {
-                    return (
-                        <Button
-                            variant="contained"
-                            startIcon={<Delete />}
-                            className={classes.deleteButton}>
-                            ลบ
-                        </Button>
-                    )
-                }
-            }
-        }
     ];
 
-    const options = {
-        filter: true,
-        filterType: 'dropdown',
-        responsive: 'stacked',
-    };
+    const actions = [
+        {
+            icon: 'edit',
+            tooltip: 'แก้ไข',
+            onClick: (event, rowData) => editDataHandle(event, rowData)
+          },
+          {
+            icon: 'delete',
+            tooltip: 'ลบ',
+            onClick: (event, rowData) => deleteDataHandle(event, rowData)
+          }
+    ]
 
     async function getAllData() {
         const token = userData.token
@@ -88,11 +70,11 @@ const ListOfficerTypes = (props) => {
 
     return (
         <>
-            <MUIDataTable
-                title={"รายการประเภทบุคคลากรในหน่วยงาน"}
+            <MaterialTable
+                title="รายการ"
                 data={data}
                 columns={columns}
-                options={options}
+                actions={actions}
             />
         </>)
 }

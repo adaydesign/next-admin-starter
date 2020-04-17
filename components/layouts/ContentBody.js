@@ -5,13 +5,20 @@ import useStyles from './style'
 
 const ContentBody = (props) => {
     const classes = useStyles()
-
+    const { paper, children } = props
     return (<>
         <Grid container>
             <Grid item xs={12}>
-                <Paper className={classes.contentBody}>
-                    {props.children}
-                </Paper>
+                { paper ? (
+                    <Paper className={classes.contentBody}>
+                        { children }
+                    </Paper>
+                ) : (
+                    <div className={classes.contentBody}>
+                        { children }
+                    </div>
+                )}
+                
             </Grid>
         </Grid>
 

@@ -61,49 +61,7 @@ const LoginForm = (props) => {
             }
         }
     }
-
-    /*
-    return (<>
-        <form className={classes.form} noValidate>
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="บัญชีผู้ใช้"
-                name="username"
-                autoFocus
-            />
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="รหัสผ่าน"
-                type="password"
-                id="password"
-            />
-            <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="ให้เครื่องจำค่าชื่อบัญชีผู้ใช้ไว้"
-            />
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-            >
-                เข้าสู่ระบบ
-            </Button>
-
-
-        </form>
-    </>)
-
-    */
+    
    return (
     <Formik onSubmit={onSubmitHandle} initialValues={{ username: "", password: "" }}>
         {({ handleSubmit, handleChange, values }) => (

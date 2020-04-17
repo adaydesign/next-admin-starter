@@ -9,12 +9,9 @@ const OfficerTypes = () => {
     return (
         <Layout>
             <ContentHeader title={'รายการประเภทบุคคลากรในหน่วยงาน'} />
-            {/* <ContentBody>
-                <div>Body Page1</div>
-            </ContentBody> */}
-            <div>
+            <ContentBody paper={false}>
                 <ListOfficerTypes />
-            </div>
+            </ContentBody>
         </Layout>
     )
 }

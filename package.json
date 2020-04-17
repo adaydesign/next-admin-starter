@@ -16,7 +16,7 @@
     "font-awesome": "^4.7.0",
     "formik": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mui-datatables": "^2.14.0",
+    "material-table": "^1.57.2",
     "next": "9.3.4",
     "prop-types": "latest",
     "react": "16.13.1",
