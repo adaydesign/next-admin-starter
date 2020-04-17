@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Formik } from "formik";
 
 import { Button, TextField, Divider, Grid }
     from '@material-ui/core';
 
 import useStyles from '../../components/officertypes/style';
-import { createNewOfficerType } from '../../includes/requests/officertypes'
+import { getOfficerTypeById, editOfficerType } from '../../includes/requests/officertypes'
 
-const AddOfficerTypesForm = (props) => {
+const EditOfficerTypesForm = (props) => {
     const classes = useStyles();
+    const router = useRouter();
 
     const initValues = {
         id: 0,
@@ -18,26 +20,67 @@ const AddOfficerTypesForm = (props) => {
         remark: ""
     }
 
+    const [formData, setFormData] = useState(initValues)
+
     const onSubmitHandle = async (data) => {
-        console.log(data)
+        // console.log(data)
         const token = localStorage.getItem('token')
         if (token) {
             // console.log(token)
-            createNewOfficerType(token, data).then(response=>{
-                console.log(response)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
+            // createNewOfficerType(token, data).then(response=>{
+            //     console.log(response)
+            // })
+            // .catch(err=>{
+            //     console.log(err)
+            // })
         } else {
             alert('not have token')
         }
     }
 
+    const getItem = async () =>{
+        const id = router.query.id;
+        const token = localStorage.getItem('token')
+        if (token) {
+            // console.log(token)
+            // createNewOfficerType(token, data).then(response=>{
+            //     console.log(response)
+            // })
+            // .catch(err=>{
+            //     console.log(err)
+            // })
+            try{
+                const result = await getOfficerTypeById(token, id)
+                // console.log(result.data.data)
+                const data = result.data.data
+                console.log(data)
+                setFormData({
+                    id: 10,
+                    name: "ss",
+                    description: "zzz",
+                    remark: "d"
+                })
+            }catch(err){
+                console.log(err.response)
+            }
+            
+        } else {
+            alert('not have token')
+        }
+    }
+
+    useEffect(() => {
+        getItem()
+    }, [])
+
     return (
-        <Formik onSubmit={onSubmitHandle} initialValues={initValues}>
+        <Formik onSubmit={onSubmitHandle} initialValues={formData}>
             {({ handleSubmit, handleChange, values }) => (
+                
                 <form onSubmit={handleSubmit} className={classes.form} >
+                    { console.log('---- formdata ---') }
+                    { console.log(values) }
+                    { console.log('---- x ---') }
                     <Grid container spacing={0} direction="column" >
                         <Grid item md={8}>
                             <TextField
@@ -50,9 +93,8 @@ const AddOfficerTypesForm = (props) => {
                                 label="กำหนดรหัสประเภท"
                                 name="id"
                                 type="number"
-                                autoFocus
                                 value={values.id || ''}
-                                onChange={handleChange}
+                                disabled
                             />
                         </Grid>
                         <Grid item md={8}>
@@ -109,7 +151,7 @@ const AddOfficerTypesForm = (props) => {
                                 variant="contained"
                                 color="secondary"
                                 className={classes.submit}
-                            >บันทึก</Button>
+                            >แก้ไข</Button>
                         </Grid>
                         <Grid item md={2}>
                             <Button
@@ -139,4 +181,5 @@ const AddOfficerTypesForm = (props) => {
 }
 
 
-export default AddOfficerTypesForm
+
+export default EditOfficerTypesForm
