@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
-
-//import Link from 'next/link'
 import Router from 'next/router'
-
-//import MUIDataTable from "mui-datatables"
-import MaterialTable from 'material-table'
-
-import Button from "@material-ui/core/Button"
-import { Edit, Delete } from '@material-ui/icons';
+import MaterialTable from 'material-table';
 import useStyles from '../../components/divisions/style';
 
 import { getAllDivisions } from '../../includes/requests/divisions'
@@ -50,6 +43,13 @@ const ListDivisions = (props) => {
         }
     ]
 
+    const options = {
+        headerStyle: {
+          backgroundColor: '#01579b',
+          color: '#FFF'
+        },
+      }
+
 
     async function getAllData() {
         const token = userData.token
@@ -71,6 +71,7 @@ const ListDivisions = (props) => {
                 data={data}
                 columns={columns}
                 actions={actions}
+                options={options}
             />
         </>
     )

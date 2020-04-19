@@ -11,9 +11,7 @@ export const Copyright = () => {
     return (
         <Typography variant="body1" color="textSecondary">
             {'Copyright © '}
-            System Name
-            {' '}
-            {new Date().getFullYear()}
+            { process.env.APP_COPYRIGHT }
             {'.'}
         </Typography>
     );
@@ -27,7 +25,7 @@ const Footer = () => {
             <Container>
                 <Grid container>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="body1">My sticky footer can be found here.</Typography>
+                        <Typography variant="body1">{ process.env.APP_ENG_NAME }</Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <Grid container justify={'flex-end'}>

@@ -7,6 +7,7 @@ const exampleInitialState = {
   id:0,
   username: '',
   fullName: '',
+  gender: 0,
   roleId: 0,
   courtCode: '',
   courtName: '',
@@ -15,11 +16,12 @@ const exampleInitialState = {
 
 export const actionTypes = {
   SAVE: 'SAVE',
-  CLEAR: 'CLEAR',
+  DESTROY: 'DESTROY',
 }
 
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
+  // console.log('action type : '+action.type)
   switch (action.type) {
     case actionTypes.SAVE:
       return {
@@ -27,12 +29,13 @@ export const reducer = (state = exampleInitialState, action) => {
         id: action.data.id,
         username: action.data.username,
         fullName: action.data.full_name,
+        gender: action.data.gender,
         roleId: action.data.role_id,
         courtCode: action.data.court_code,
         courtName: action.data.office.court_name,
         token: action.token
       };
-    case actionTypes.CLEAR:
+    case actionTypes.DESTROY:
       return exampleInitialState;
     default:
       return state
@@ -44,7 +47,7 @@ export const saveLoginUser = (userData, token)=>{
 }
 
 export const clearUserData = ()=>{
-    return {type: actionTypes.CLEAR}
+    return {type: actionTypes.DESTROY}
 }
 
 export function initializeStore(initialState = exampleInitialState) {

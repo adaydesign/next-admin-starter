@@ -10,7 +10,6 @@ const OfficerTypesEdit = () => {
         <Layout>
             <ContentHeader title={'แก้ไขประเภทบุคคลากรในหน่วยงาน'} />
             <ContentBody>
-                <div>OO</div>
                 <EditOfficerTypesForm />
             </ContentBody>
         </Layout>

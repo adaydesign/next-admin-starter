@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'http://localhost:8000/api/v1'
+const API_URL = process.env.API_URL
 
 // Axios Config
 export const HEADER_NONE_AUTH = {

@@ -8,11 +8,8 @@ const Divisions = () => {
     return (
         <Layout>
             <ContentHeader title={'รายการภาค/สังกัด'} />
-            <ContentBody>
-                <div>Body Page1</div>
-                <div>
-                    <ListDivisions />
-                </div>
+            <ContentBody paper={false}>
+                <ListDivisions />
             </ContentBody>
         </Layout>
     )

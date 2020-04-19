@@ -5,7 +5,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        flexGrow: 1
+        flexGrow: 1,
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     appBar: {
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: 1201, /*theme.zIndex.drawer ? theme.zIndex.drawer + 1 : 1201,*/
     },
     drawer: {
         width: drawerWidth,
