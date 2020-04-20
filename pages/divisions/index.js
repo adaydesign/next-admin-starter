@@ -3,8 +3,8 @@ import Layout from '../../components/layouts/Layout'
 import ContentHeader from '../../components/layouts/ContentHeader'
 import ContentBody from '../../components/layouts/ContentBody'
 import ListDivisions from '../../components/divisions/ListDivisions'
-const Divisions = () => {
 
+const Divisions = () => {
     return (
         <Layout>
             <ContentHeader title={'รายการภาค/สังกัด'} />

@@ -11,16 +11,19 @@ import { editDivision } from '../../includes/requests/divisions'
 
 const EditDivisionsForm = (props) => {
     const classes = useStyles();
+    const {data} = props;
+    // console.log('edit form')
+    // console.log(data)
     const initValues = {
-        id: "",
-        name: "",
+        id: data.id,
+        name: data.name,
     }
-    const onSubmitHandle = async (data) => {
-        console.log(data)
+    const onSubmitHandle = async (formData) => {
+        console.log(formData)
         const token = localStorage.getItem('token')
         if (token) {
             try {
-                const result = await createNewDivision(token, data)
+                const result = await editDivision(token, formData.id, formData)
                 console.log(result)
             } catch (err) {
                 console.log(err.response.data)
@@ -31,14 +34,14 @@ const EditDivisionsForm = (props) => {
 
     }
 
-
     return (
-        <Formik onSubmit={onSubmitHandle} initialValues={initValues}>
+        <>
+        {initValues.id ? (
+            <Formik onSubmit={onSubmitHandle} initialValues={initValues}>
             {({ handleSubmit, handleChange, values }) => (
                 <form onSubmit={handleSubmit} className={classes.form} >
-
-                    <Grid container direction="column">
-                        <Grid item md={8} >
+                    <Grid container direction="row" spacing={2}>
+                        <Grid item md={2} >
                             <TextField
                                 variant="outlined"
                                 margin="normal"
@@ -53,7 +56,6 @@ const EditDivisionsForm = (props) => {
                                 value={values.id}
                             />
                         </Grid>
-
                         <Grid item md={8} >
                             <TextField
                                 variant="outlined"
@@ -95,14 +97,10 @@ const EditDivisionsForm = (props) => {
             )
             }
         </Formik >
+        ) : (<>{'loading..'}</>)}
+        
+        </>
     )
 }
 
-EditDivisionsForm.getInitialProps = () => {
-    const id = Router.query.id
-    console.log(id)
-    //get data
-
-    //return data to props
-}
 export default EditDivisionsForm;

@@ -5,10 +5,11 @@ import MaterialTable from 'material-table';
 import useStyles from '../../components/divisions/style';
 
 import { getAllDivisions } from '../../includes/requests/divisions'
+
 const ListDivisions = (props) => {
     const classes = useStyles();
     const { userData } = props
-    const [data, setdata] = useState([])
+    const [data, setData] = useState([])
 
     const editDataHandle = (event, rowData) => {
         // alert("You edit " + rowData.name)
@@ -54,25 +55,26 @@ const ListDivisions = (props) => {
     async function getAllData() {
         const token = userData.token
         const allDivisions = await getAllDivisions(token)
-        console.log("...List Data ")
-        console.log(allDivisions.data.data)
-        setdata(allDivisions.data.data)
+        // console.log("...List Data ")
+        // console.log(allDivisions.data.data)
+        setData(allDivisions.data.data)
     }
 
     useEffect(() => {
         getAllData()
-
     }, [])
 
     return (
-        <>
-            <MaterialTable
-                title={"รายการภาค/สังกัด"}
-                data={data}
-                columns={columns}
-                actions={actions}
-                options={options}
-            />
+        <>  
+            {console.log(data)}
+            {data.length > 0 ? ( <MaterialTable
+            title={"รายการภาค/สังกัด"}
+            data={data}
+            columns={columns}
+            actions={actions}
+            options={options}
+        />) : (<>{'loading..'}</>)}
+           
         </>
     )
 

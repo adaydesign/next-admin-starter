@@ -20,8 +20,11 @@ const Layout = (props) => {
     const dispatch = useDispatch();
 
     const clearUserLocalData = () => {
-        // clear user data
-        dispatch(clearUserData())
+        if(userData.loginSuccess){
+            // clear user data
+            dispatch(clearUserData())
+        }
+
         // clear localstorage
         if (localStorage.getItem('user') && localStorage.getItem('token')) {
             localStorage.removeItem('user')
