@@ -62,6 +62,7 @@ export const mainMenu = [
 
         ]
     },  
+    
     {  
         text:'ประเภทบุคคล',
         icon:<Contacts />,
@@ -79,6 +80,24 @@ export const mainMenu = [
             },
         ]
     },
+    {
+        text: 'วันหยุด',
+        icon: <Home />,
+        key: '8',
+        subs: [
+            {
+                text: 'รายการวันหยุด',
+                link: '/holidays',
+                key: '81'
+            },
+            {
+                text: 'เพิ่มรายการวันหยุด',
+                link: '/holidays/add',
+                key: '82'
+            },
+
+        ]
+    },  
 
 ]
 
