@@ -27,6 +27,7 @@ export const USER_URI = (id) => `${API_URL}/users` + `${id != undefined ? '/' + 
 export const DEPARTMENT_URI = (courtCode) => `${API_URL}/departments` + `${courtCode != undefined ? '/' + courtCode : ''}`
 export const DIVISION_URI = (id) => `${API_URL}/divisions` + `${id != undefined ? '/' + id : ''}`
 export const HOLIDAY_URI = (id) => `${API_URL}/holidays` + `${id != undefined ? '/' + id : ''}`
+export const WORKDAY_URI = (id) => `${API_URL}/workdays` + `${id != undefined ? '/' + id : ''}`
 export const OFFICERTYPE_URI = (id) => `${API_URL}/officer-types` + `${id != undefined ? '/' + id : ''}`
 
 

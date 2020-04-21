@@ -5,18 +5,15 @@ import { Formik } from "formik";
 import { Button, TextField, Divider, Grid }
     from '@material-ui/core';
 
-import useStyles from '../holidays/style';
-import { createNewHoliday } from '../../includes/requests/holidays'
+import useStyles from './style';
+import { createNewWorkday } from '../../includes/requests/workdays'
 
-const AddHolidaysForm = (props) => {
+const AddWorkdaysForm = (props) => {
     const classes = useStyles();
     const initValues = {
         year: "",
         month: "",
         count: "",
-        name: "",
-        start_date: "",
-        end_date: "",
     }
     const onSubmitHandle = async (data) => {
         //console.log(data)
@@ -29,7 +26,7 @@ const AddHolidaysForm = (props) => {
         const token = localStorage.getItem('token')
         if (token) {
             try {
-                const result = await createNewHoliday(token, sendData)
+                const result = await createNewWorkday(token, sendData)
                 console.log(result)
             } catch (err) {
                 console.log(err.response.data)
@@ -93,51 +90,7 @@ const AddHolidaysForm = (props) => {
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item md={2} >
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                size="small"
-                                type="date"
-                                required
-                                fullWidth
-                                id="start_date"
-                                label="เริ่มหยุด"
-                                name="start_date"
-                                value={values.start_date || ''}
-                                onChange={handleChange}
-                            />
-                        </Grid>
-                        <Grid item md={2} >
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                size="small"
-                                type="date"
-                                required
-                                fullWidth
-                                id="end_date"
-                                label="สิ้นสุด"
-                                name="end_date"
-                                value={values.end_date || ''}
-                                onChange={handleChange}
-                            />
-                        </Grid>
 
-                        <Grid item md={8} >
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                size="small"
-                                required
-                                fullWidth
-                                id="name"
-                                label="ชื่อวันหยุด"
-                                name="name"
-                                value={values.name || ''}
-                                onChange={handleChange}
-                            />
-                        </Grid>
 
                     </Grid>
 
@@ -162,7 +115,7 @@ const AddHolidaysForm = (props) => {
                             >รีเซ็ต</Button>
                         </Grid>
                         <Grid item md={2}>
-                            <Link href="/holidays">
+                            <Link href="/workdays">
                                 <Button
                                     type="button"
                                     fullWidth
@@ -181,4 +134,4 @@ const AddHolidaysForm = (props) => {
 }
 
 
-export default AddHolidaysForm;
+export default AddWorkdaysForm;

@@ -1,6 +1,7 @@
 import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone, 
-    AssignmentReturn, BatteryCharging60, Telegram, Contacts, Add, ListAlt, Home
+    AssignmentReturn, BatteryCharging60, Telegram, Contacts, Add, ListAlt, Home, InsertEmoticon, SentimentVeryDissatisfied
 } from '@material-ui/icons';
+
 
 export const mainMenu = [
     {
@@ -82,7 +83,7 @@ export const mainMenu = [
     },
     {
         text: 'วันหยุด',
-        icon: <Home />,
+        icon: <InsertEmoticon />,
         key: '8',
         subs: [
             {
@@ -94,6 +95,24 @@ export const mainMenu = [
                 text: 'เพิ่มรายการวันหยุด',
                 link: '/holidays/add',
                 key: '82'
+            },
+
+        ]
+    },  
+    {
+        text: 'วันทำงาน',
+        icon: <SentimentVeryDissatisfied />,
+        key: '9',
+        subs: [
+            {
+                text: 'รายการวันทำงาน',
+                link: '/workdays',
+                key: '91'
+            },
+            {
+                text: 'เพิ่มรายการวันทำงาน',
+                link: '/workdays/add',
+                key: '92'
             },
 
         ]

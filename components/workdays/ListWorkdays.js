@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import Router from 'next/router'
 import MaterialTable from 'material-table';
-import useStyles from '../holidays/style';
-import Alert from '../../components/shared/Alert'
+import useStyles from './style';
+import Alert from '../shared/Alert'
 
-import { getAllHolidays, deleteHoliday } from '../../includes/requests/holidays'
+import { getAllWorkdays, deleteWorkday } from '../../includes/requests/workdays'
 
-const ListHolidays = (props) => {
+const ListWorkdays = (props) => {
     const classes = useStyles();
     const { userData } = props
     const [data, setData] = useState([])
 
     const editDataHandle = (event, rowData) => {
         // alert("You edit " + rowData.name)
-        Router.push('/holidays/edit/[id]', `/holidays/edit/${rowData.id}`)
+        Router.push('/workdays/edit/[id]', `/workdays/edit/${rowData.id}`)
     }
 
     const deleteDataHandle = (event, rowData) => {
@@ -51,7 +51,7 @@ const ListHolidays = (props) => {
                     console.log('delete : ' + rowData.id)
 
                     const token = userData.token
-                    deleteHoliday(token, rowData.id).then(rs => {
+                    deleteWorkday(token, rowData.id).then(rs => {
                         getAllData()
                     })
                         .catch(err => {
@@ -76,16 +76,8 @@ const ListHolidays = (props) => {
             title: "เดือน"
         },
         {
-            field: "name",
-            title: "รายละเอียด"
-        },
-        {
-            field: "start_date",
-            title: "เริ่มหยุด"
-        },
-        {
-            field: "end_date",
-            title: "สิ้นสุด"
+            field: "count",
+            title: "จำนวนวันทำงาน"
         },
 
     ];
@@ -114,10 +106,10 @@ const ListHolidays = (props) => {
     async function getAllData() {
         const token = userData.token
         try {
-            const allHolidays = await getAllHolidays(token)
+            const allWorkdays = await getAllWorkdays(token)
             console.log("...List Data ")
-            console.log(allHolidays.data.data)
-            setData(allHolidays.data.data)
+            console.log(allWorkdays.data.data)
+            setData(allWorkdays.data.data)
         } catch (err) {
             console.log(err)
         }
@@ -131,7 +123,7 @@ const ListHolidays = (props) => {
         <>
             {console.log(data)}
             {data.length > 0 ? (<MaterialTable
-                title={"รายการวันหยุด"}
+                title={"รายการวันทำงาน"}
                 data={data}
                 columns={columns}
                 actions={actions}
@@ -151,4 +143,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(ListHolidays);
+export default connect(mapStateToProps)(ListWorkdays);
