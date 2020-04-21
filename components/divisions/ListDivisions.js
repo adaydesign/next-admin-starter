@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Router from 'next/router'
 import MaterialTable from 'material-table';
 import useStyles from '../../components/divisions/style';
+import Alert from '../../components/shared/Alert'
 
-import { getAllDivisions } from '../../includes/requests/divisions'
+import { getAllDivisions, deleteDivision } from '../../includes/requests/divisions'
 
 const ListDivisions = (props) => {
     const classes = useStyles();
@@ -17,9 +18,51 @@ const ListDivisions = (props) => {
     }
 
     const deleteDataHandle = (event, rowData) => {
-        confirm("You want to delete " + rowData.name)
+        // confirm("You want to delete " + rowData.name)
+        // Swal.fire({
+        //     title: 'Are you sure?',
+        //     text: "You won't be able to revert this!",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes, delete it!'
+        //   }).then((result) => {
+        //     if (result.value) {
+        //       Swal.fire(
+        //         'Deleted!',
+        //         'Your file has been deleted.',
+        //         'success'
+        //       )
+        //     }
+        //   })
+        Alert(
+            {
+                title: 'คุณต้องการลบข้อมูลนี้หรือไม่ ?',
+                text: `ชื่อรายการ ${rowData.name}`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ลบได้เลย',
+                cancelButtonText: 'ยกเลิก'
+            }, (result)=>{
+                if(result.value){
+                    console.log('delete : '+rowData.id)
+
+                    const token = userData.token
+                    deleteDivision(token, rowData.id).then(rs=>{
+                        getAllData()
+                    })
+                    .catch(err=>{
+                        alert(err)
+                    })
+                }
+            })
     }
-    
+
+
+
     const columns = [
         {
             field: "id",
@@ -28,7 +71,7 @@ const ListDivisions = (props) => {
         {
             field: "name",
             title: "ชื่อภาค/สังกัด"
-        },        
+        },
     ];
 
     const actions = [
@@ -46,10 +89,10 @@ const ListDivisions = (props) => {
 
     const options = {
         headerStyle: {
-          backgroundColor: '#01579b',
-          color: '#FFF'
+            backgroundColor: '#01579b',
+            color: '#FFF'
         },
-      }
+    }
 
 
     async function getAllData() {
@@ -65,16 +108,16 @@ const ListDivisions = (props) => {
     }, [])
 
     return (
-        <>  
+        <>
             {console.log(data)}
-            {data.length > 0 ? ( <MaterialTable
-            title={"รายการภาค/สังกัด"}
-            data={data}
-            columns={columns}
-            actions={actions}
-            options={options}
-        />) : (<>{'loading..'}</>)}
-           
+            {data.length > 0 ? (<MaterialTable
+                title={"รายการภาค/สังกัด"}
+                data={data}
+                columns={columns}
+                actions={actions}
+                options={options}
+            />) : (<>{'loading..'}</>)}
+
         </>
     )
 
