@@ -6,6 +6,7 @@ import useStyles from '../holidays/style';
 import Alert from '../../components/shared/Alert'
 
 import { getAllHolidays, deleteHoliday } from '../../includes/requests/holidays'
+import { getDateYMDFormat } from '../../includes/lib/date-utils'
 
 const ListHolidays = (props) => {
     const classes = useStyles();
@@ -117,7 +118,12 @@ const ListHolidays = (props) => {
             const allHolidays = await getAllHolidays(token)
             console.log("...List Data ")
             console.log(allHolidays.data.data)
-            setData(allHolidays.data.data)
+            const usedData = allHolidays.data.data.map(d=>{
+                d.start_date = getDateYMDFormat(d.start_date)
+                d.end_date = getDateYMDFormat(d.end_date)
+                return d
+            })
+            setData(usedData)
         } catch (err) {
             console.log(err)
         }

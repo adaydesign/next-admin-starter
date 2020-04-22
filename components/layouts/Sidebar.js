@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import {useRouter} from 'next/router'
 // import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 // import AppBar from '@material-ui/core/AppBar';
@@ -24,8 +25,22 @@ const MenuItem = (props) => {
     const classes = useStyles()
     const { subs, menu, fixClass } = props
     const [open, setOpen] = useState(false)
+    const router = useRouter()
+
     const openSubHandle = () => {
         setOpen(!open)
+    }
+
+    const checkSelectedOfSubMenu = () => {
+        if(!open){
+            for(let i=0; i<subs.length; i++){
+                const subMenu = subs[i]
+                if(router.pathname == subMenu.link){
+                    setOpen(true)
+                    break;
+                }
+            }
+        }
     }
 
     if (subs != undefined) {
@@ -35,6 +50,7 @@ const MenuItem = (props) => {
                     <ListItemIcon>{menu.icon}</ListItemIcon>
                     <ListItemText primary={menu.text} />
                     {open ? <ExpandLess /> : <ExpandMore />}
+                    { checkSelectedOfSubMenu() }
                 </ListItem>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
@@ -46,7 +62,7 @@ const MenuItem = (props) => {
     } else {
         return (
             <Link href={menu.link}>
-                <ListItem button className={fixClass}>
+                <ListItem button className={fixClass} selected={router.pathname==menu.link}>
                     {menu.icon ? (<ListItemIcon>{menu.icon}</ListItemIcon>) : null}
                     <ListItemText primary={menu.text} />
                 </ListItem>
