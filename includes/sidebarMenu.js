@@ -1,5 +1,7 @@
 import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone, 
-    AssignmentReturn, BatteryCharging60, Telegram, Contacts, Add, ListAlt, Home, InsertEmoticon, SentimentVeryDissatisfied
+    AssignmentReturn, BatteryCharging60, Telegram, Contacts,
+    Add, ListAlt, Home, InsertEmoticon, SentimentVeryDissatisfied,
+    AssignmentInd, FilterList, Apartment
 } from '@material-ui/icons';
 
 
@@ -100,19 +102,69 @@ export const mainMenu = [
         ]
     },  
     {
-        text: 'วันทำงาน',
+        text: 'วันทำการ',
         icon: <SentimentVeryDissatisfied />,
         key: '9',
         subs: [
             {
-                text: 'รายการวันทำงาน',
+                text: 'รายการวันทำการ',
                 link: '/workdays',
                 key: '91'
             },
             {
-                text: 'เพิ่มรายการวันทำงาน',
+                text: 'เพิ่มรายการวันทำการ',
                 link: '/workdays/add',
                 key: '92'
+            },
+
+        ]
+    },  
+    {
+        text: 'หน่วยงาน',
+        icon: <Apartment />,
+        key: '10',
+        subs: [
+            {
+                text: 'รายการหน่วยงาน',
+                link: '/offices',
+                key: '101'
+            },
+            {
+                text: 'เพิ่มรายการหน่วยงาน',
+                link: '/offices/add',
+                key: '102'
+            },
+
+        ]
+    },  
+
+    {
+        text: 'ตำแหน่งงาน',
+        icon: <AssignmentInd />,
+        key: '11',
+        subs: [
+            {
+                text: 'รายการตำแหน่งงาน',
+                link: '/positions',
+                key: '111'
+            },
+            {
+                text: 'เพิ่มรายการตำแหน่งงาน',
+                link: '/positions/add',
+                key: '112'
+            },
+
+        ]
+    },  
+    {
+        text: 'ระดับข้าราชการ',
+        icon: <FilterList />,
+        key: '13',
+        subs: [
+            {
+                text: 'รายการระดับข้าราชการ',
+                link: '/levels',
+                key: '131'
             },
 
         ]

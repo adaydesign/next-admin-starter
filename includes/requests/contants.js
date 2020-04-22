@@ -28,6 +28,9 @@ export const DEPARTMENT_URI = (courtCode) => `${API_URL}/departments` + `${court
 export const DIVISION_URI = (id) => `${API_URL}/divisions` + `${id != undefined ? '/' + id : ''}`
 export const HOLIDAY_URI = (id) => `${API_URL}/holidays` + `${id != undefined ? '/' + id : ''}`
 export const WORKDAY_URI = (id) => `${API_URL}/workdays` + `${id != undefined ? '/' + id : ''}`
+export const POSITION_URI = (id) => `${API_URL}/positions` + `${id != undefined ? '/' + id : ''}`
+export const LEVEL_URI = (id) => `${API_URL}/levels` + `${id != undefined ? '/' + id : ''}`
+export const OFFICE_URI = (id) => `${API_URL}/offices` + `${id != undefined ? '/' + id : ''}`
 export const OFFICERTYPE_URI = (id) => `${API_URL}/officer-types` + `${id != undefined ? '/' + id : ''}`
 
 
