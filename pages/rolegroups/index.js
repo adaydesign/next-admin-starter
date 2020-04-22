@@ -2,17 +2,17 @@ import React from 'react'
 import Layout from '../../components/layouts/Layout'
 import ContentHeader from '../../components/layouts/ContentHeader'
 import ContentBody from '../../components/layouts/ContentBody'
-import ListWorkdays from '../../components/workdays/ListWorkdays'
+import ListRoleGroups from '../../components/rolegroups/ListRoleGroups'
 
-const Workdays = () => {
+const Roles = () => {
     return (
         <Layout>
-            <ContentHeader title={'รายการจำนวนวันทำการ'} />
+            <ContentHeader title={'รายการกลุ่มของบทบาท - Role Groups'} />
             <ContentBody paper={false}>
-                <ListWorkdays />
+                <ListRoleGroups />
             </ContentBody>
         </Layout>
     )
 }
 
-export default Workdays
+export default Roles

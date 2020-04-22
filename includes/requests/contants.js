@@ -29,6 +29,9 @@ export const DIVISION_URI = (id) => `${API_URL}/divisions` + `${id != undefined 
 export const HOLIDAY_URI = (id) => `${API_URL}/holidays` + `${id != undefined ? '/' + id : ''}`
 export const WORKDAY_URI = (id) => `${API_URL}/workdays` + `${id != undefined ? '/' + id : ''}`
 export const OFFICERTYPE_URI = (id) => `${API_URL}/officer-types` + `${id != undefined ? '/' + id : ''}`
+export const ROLE_URI = (id) => `${API_URL}/roles` + `${id != undefined ? '/' + id : ''}`
+export const ROLEGROUP_URI = (id) => `${API_URL}/role-groups` + `${id != undefined ? '/' + id : ''}`
+export const PERMISSION_URI = (id) => `${API_URL}/permissions` + `${id != undefined ? '/' + id : ''}`
 
 
 
