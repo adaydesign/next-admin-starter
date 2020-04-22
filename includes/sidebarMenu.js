@@ -2,6 +2,8 @@ import {MoveToInbox, Mail, AccessAlarm, Brightness3TwoTone,
     AssignmentReturn, BatteryCharging60, Telegram, Contacts,
     Add, ListAlt, Home, InsertEmoticon, SentimentVeryDissatisfied,
     AssignmentInd, FilterList, Apartment
+    AssignmentReturn, BatteryCharging60, Telegram, Contacts, Add, ListAlt, 
+    Home, InsertEmoticon, SentimentVeryDissatisfied, AssignmentInd,Assignment,PermContactCalendar
 } from '@material-ui/icons';
 
 
@@ -169,6 +171,25 @@ export const mainMenu = [
 
         ]
     },  
+    },
+    {
+        text:'Role',
+        icon:<AssignmentInd />,
+        link: '/roles',
+        key:'14'
+    },
+    {
+        text:'Role Group',
+        icon:<Assignment />,
+        link: '/rolegroups',
+        key:'15'
+    },
+    {
+        text:'Permissions',
+        icon:<PermContactCalendar />,
+        link: '/permissions',
+        key:'16'
+    }  
 
 ]
 

@@ -32,6 +32,9 @@ export const POSITION_URI = (id) => `${API_URL}/positions` + `${id != undefined 
 export const LEVEL_URI = (id) => `${API_URL}/levels` + `${id != undefined ? '/' + id : ''}`
 export const OFFICE_URI = (id) => `${API_URL}/offices` + `${id != undefined ? '/' + id : ''}`
 export const OFFICERTYPE_URI = (id) => `${API_URL}/officer-types` + `${id != undefined ? '/' + id : ''}`
+export const ROLE_URI = (id) => `${API_URL}/roles` + `${id != undefined ? '/' + id : ''}`
+export const ROLEGROUP_URI = (id) => `${API_URL}/role-groups` + `${id != undefined ? '/' + id : ''}`
+export const PERMISSION_URI = (id) => `${API_URL}/permissions` + `${id != undefined ? '/' + id : ''}`
 
 
 
